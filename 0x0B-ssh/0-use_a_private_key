@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-server_name="98553-web-01"
+server_ip="35.153.50.197"
 
-ssh -i ~/.ssh/school ubuntu@98553-web-01
+ssh -i ~/.ssh/school ubuntu@35.153.50.197
