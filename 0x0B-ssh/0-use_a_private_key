@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
+#setting the private key file
+PRIVATE_KEY=~/.ssh/id_rsa.pub
+
 #setting the username
 USERNAME=ubuntu
 
 #setting the server IP adress
 SERVER_IP="35.153.50.197"
-
-#setting the private key file
-PRIVATE_KEY=~/.ssh/id_rsa.pub
 
 #connecting to the server
 ssh -i "$PRIVATE_KEY" "$USER_NAME"@"$SERVER_IP"
