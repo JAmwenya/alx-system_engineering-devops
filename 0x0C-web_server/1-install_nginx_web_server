@@ -20,3 +20,4 @@ cp /var/www/html/index.nginx-debian.html /www/html/index.nginx-debian.html.bckp
 echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
 #restart nginx
 sudo service nginx restart
+echo -e "nginx installed successfully\n"
