@@ -1,8 +1,22 @@
 #!/bin/env bash
 #installs nginx and configures it on a remote server
+#should be listening at port 80 - deffault port
+#page should return a hello world string
 
+#update nginx
 sudo apt update
+#install with yes to all prompts
 sudo apt install -y nginx
-ufw allow 'Nginx HTTP'
-echo 'Hello World!' > /var/www/html/index.nginx-debian.html
-service nginx start
+#start the service
+sudo service nginx start
+#allow firewall to enable nginx server traffic
+sudo ufw allow 'Nginx HTTP'
+#change ownership to user
+sudo chown -R "SUSER":"SUSER" /var/www/html
+sudo chmod -R 755 /var/www
+#backup the deffault index
+cp /var/www/html/index.nginx-debian.html /www/html/index.nginx-debian.html.bckp
+#return hello world string
+echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
+#restart nginx
+sudo service nginx restart
