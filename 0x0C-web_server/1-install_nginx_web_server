@@ -11,13 +11,8 @@ sudo apt install -y nginx
 sudo service nginx start
 #allow firewall to enable nginx server traffic
 sudo ufw allow 'Nginx HTTP'
-#change ownership to user
-sudo chown -R "SUSER":"SUSER" /var/www/html
-sudo chmod -R 755 /var/www
-#backup the deffault index
-cp /var/www/html/index.nginx-debian.html /www/html/index.nginx-debian.html.bckp
 #return hello world string
-echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
+echo -e "Hello World!" | sudo tee /var/www/html/index.html
 #restart nginx
 sudo service nginx restart
 echo -e "nginx installed successfully\n"
