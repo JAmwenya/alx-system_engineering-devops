@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 #installs nginx and configures it on a remote server
 #should be listening at port 80 - deffault port
 #page should return a hello world string
