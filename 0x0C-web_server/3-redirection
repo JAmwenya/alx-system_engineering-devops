@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#installs nginx and configures it on a remote server
+#should be listening at port 80 - deffault port
+#page should return a hello world string
+#page should redirect with a 301 moved permanently code
+
+#update nginx
+sudo apt update
+#install with yes to all prompts
+sudo apt install -y nginx
+#configure nginx to listen on port 80
+sudo sed -i 's/# listen 80;/listen 80;/g' /etc/nginx/sites-available/default
+#start the service
+sudo service nginx start
+#allow firewall to enable nginx server traffic
+sudo ufw allow 'Nginx HTTP'
+#return hello world string
+echo -e "Hello World!" | sudo tee /var/www/html/index.html
+#configure redirection to another site
+new_location="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/JAmwenya permanent;"
+
+sudo sed -i "s/server_name _;/$new_location/" /etc/nginx/sites-enabled/default
+#restart nginx
+sudo service nginx restart
+echo -e "nginx installed successfully\n"
