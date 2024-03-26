@@ -4,15 +4,18 @@
 Python script that, using a provided REST API, for a given employee ID,
 returns information about his/her TODO list progress.
 """
+
 from requests import get
 from sys import argv
+
 
 if __name__ == "__main__":
     if len(argv) != 2:
         print("Usage: python script.py <user_id>")
         exit(1)
 
-    user_id = int(argv[1])  # Convert user ID to integer
+    # Convert user ID to integer
+    user_id = int(argv[1])
 
     # Fetching todos data
     response = get('https://jsonplaceholder.typicode.com/todos')
