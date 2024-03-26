@@ -9,11 +9,12 @@ from sys import argv
 import csv
 
 if __name__ == "__main__":
-	# Fetching todos data
+
+    # Fetching todos data
     response = get('https://jsonplaceholder.typicode.com/todos/')
     data = response.json()
-	
-	#Fetching user info
+
+    # Fetching user info
     row = []
     info_url = get('https://jsonplaceholder.typicode.com/users')
     data2 = info_url.json()
