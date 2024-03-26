@@ -18,7 +18,8 @@ if __name__ == "__main__":
     tasks_done = sum(task['completed'] for task in user_tasks)
 
 # Fetch user info
-    user_info = requests.get(f'https://jsonplaceholder.typicode.com/users/{user_id}').json()
+    user_info = requests.get
+    (f'https://jsonplaceholder.typicode.com/users/{user_id}').json()
     employee_name = user_info['name']
 
 # Print progress
