@@ -21,16 +21,14 @@ if __name__ == "__main__":
     tasks_done = sum(task['completed'] for task in user_tasks)
 
     # Fetching user info
-    response = get(
-'https://jsonplaceholder.typicode.com/users/{}'.format(user_id)
-    )
-    user_info = response.json()
-    employee_name = user_info['name']
+    info_url = 'https://jsonplaceholder.typicode.com/users/{}'.format(user_id)
+    response = get(info_url)
+    info = response.json()
+    employee_name = info['name']
 
     # Printing task completion status
-    print(
-"Employee {} has done ({}/{}) tasks:".format(employee_name, tasks_done, total_tasks)
-        )
+    print("Employee {} has done ({}/{}) tasks:".format(
+        employee_name, tasks_done, total_tasks))
     for task in user_tasks:
         if task['completed']:
             print("\t{}".format(task['title']))
