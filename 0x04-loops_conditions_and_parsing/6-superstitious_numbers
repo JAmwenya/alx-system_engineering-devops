@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#display "Best School" 10 times using while loop
+
+myvar=1
+while [ $myvar -le 20 ]
+do
+if [ $myvar = 4 ]
+then
+	echo "$myvar"
+	echo "bad luck from China"
+elif [ $myvar = 9 ]
+then
+	 echo "$myvar"
+	echo "good luck from Japan"
+elif [ $myvar = 17 ]
+then
+	echo "$myvar"
+	echo "bad luck from Italy"
+else
+	echo "$myvar"
+fi
+	 myvar=$(( myvar +1 ))
+done
