@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#display "Best School" 10 times using while loop
+
+myvar=1
+while [ $myvar -le 10 ]
+do
+	echo "Best School"
+
+if [ $myvar = 9 ]
+then
+	echo "Hi"
+fi
+	 myvar=$(( myvar +1 ))
+done
