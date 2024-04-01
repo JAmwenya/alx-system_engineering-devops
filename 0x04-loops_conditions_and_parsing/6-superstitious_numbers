@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-#display "Best School" 10 times using while loop
+#display displays 4 and then bad luck from China for the 4th loop iteration
+#displays 9 and then bad luck from Japan for the 9th loop iteration
+#displays 17 and then bad luck from Italy for the 17th loop iteration
 
 myvar=1
 while [ $myvar -le 20 ]
