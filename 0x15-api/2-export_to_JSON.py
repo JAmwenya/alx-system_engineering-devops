@@ -1,38 +1,29 @@
 #!/usr/bin/python3
+"""Accessing a REST API for todo lists of employees"""
 
-"""
-Python script that exports data in the CSV format
-"""
+import json
+import requests
+import sys
 
-from requests import get
-from sys import argv
-import csv
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    employeeId = sys.argv[1]
+    baseUrl = "https://jsonplaceholder.typicode.com/users"
+    url = baseUrl + "/" + employeeId
 
-    # Fetching todos data
-    response = get('https://jsonplaceholder.typicode.com/todos/')
-    data = response.json()
+    response = requests.get(url)
+    username = response.json().get('username')
 
-    # Fetching user info
-    row = []
-    info_url = get('https://jsonplaceholder.typicode.com/users')
-    data2 = info_url.json()
+    todoUrl = url + "/todos"
+    response = requests.get(todoUrl)
+    tasks = response.json()
 
-    for i in data2:
-        if i['id'] == int(argv[1]):
-            employee = i['username']
-
-    with open(argv[1] + '.csv', 'w', newline='') as file:
-        writ = csv.writer(file, quoting=csv.QUOTE_ALL)
-
-        for i in data:
-
-            row = []
-            if i['userId'] == int(argv[1]):
-                row.append(i['userId'])
-                row.append(employee)
-                row.append(i['completed'])
-                row.append(i['title'])
-
-                writ.writerow(row)
+    dictionary = {employeeId: []}
+    for task in tasks:
+        dictionary[employeeId].append({
+            "task": task.get('title'),
+            "completed": task.get('completed'),
+            "username": username
+        })
+    with open('{}.json'.format(employeeId), 'w') as filename:
+        json.dump(dictionary, filename)
