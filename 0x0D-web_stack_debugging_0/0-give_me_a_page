@@ -1,0 +1,21 @@
+# Access the Docker container
+docker exec -it <container_id> /bin/bash
+
+# Check Apache service status
+service apache2 status
+
+# Check Apache configuration files
+cat /etc/apache2/sites-enabled/000-default.conf
+
+# Ensure correct index file is configured
+# Edit the configuration file if necessary
+vi /etc/apache2/sites-enabled/000-default.conf
+
+# set server name to "localhost"
+sed -i 's/#ServerName www.example.com/ServerName localhost/' /etc/apache2/sites-enabled/000-default.conf
+
+# Ensure that the DocumentRoot points to the correct directory containing index.html file.
+# DocumentRoot /var/www/html
+
+# Restarting Apache service
+service apache2 restart
