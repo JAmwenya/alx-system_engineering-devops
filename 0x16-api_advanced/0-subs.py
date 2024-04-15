@@ -3,8 +3,6 @@
 Returns number of subscribers for a given subreddit
 """
 
-from requests import get
-
 
 def number_of_subscribers(subreddit):
 	"""
@@ -12,16 +10,13 @@ def number_of_subscribers(subreddit):
 	"""
 
 
-    if subreddit is None or not isinstance(subreddit, str):
+    import requests
+
+    sub_info = requests.get("https://www.reddit.com/r/{}/about.json"
+                            .format(subreddit),
+                            headers={"User-Agent": "My-User_Agent"},
+                            allow_redirects=False)
+    if sub_info.status_code >= 300:
         return 0
 
-    user_agent = {'User-Agent': 'Google Chrome Version 123.0.6312.105/106'}
-    url = 'https://www.reddit.com/r/dev/api/about.json'
-    response = get(url, headers=user_agent)
-    results = response.json()
-
-    try:
-        return results.get('data').get('subscribers')
-
-    except Exception:
-        return 0
+    return sub_info.json().get("data").get("subscribers")
