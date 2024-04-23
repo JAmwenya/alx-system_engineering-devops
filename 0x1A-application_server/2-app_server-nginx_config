@@ -2,7 +2,7 @@
   listen 80;
   root /var/www/html;
 
-  add_header X-Served-By 119436-web-01;
+  add_header X-Served-By 98553-web-01;
 
   location / {
     try_files index.nginx-debian.html /index.html  / .html;
