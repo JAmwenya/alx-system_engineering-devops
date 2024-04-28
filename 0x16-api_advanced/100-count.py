@@ -6,7 +6,7 @@ import requests
 
 
 def count_words(subreddit, word_list, after="", count=[]):
-    """parses the title of all hot articles, and prints a sorted count of given keywords"""
+    """prints a sorted count of given keywords"""
 
     if after == "":
         count = [0] * len(word_list)
